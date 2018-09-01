@@ -8,10 +8,9 @@ services:
       - ./:/project
       - "${HOME}/.sbt:/root/.sbt"
       - "${HOME}/.ivy2:/root/.ivy2"
-    command:
+    entrypoint:
       - sbt
       - -Dsbt.server.autostart=false
     ports:
       - "9000:9000"
-
 

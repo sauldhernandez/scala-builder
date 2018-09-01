@@ -10,4 +10,4 @@ if [ ! -f .docker-compose.parent.yml ]; then
     curl -sL https://raw.githubusercontent.com/sauldhernandez/scala-builder/master/docker-compose.parent.yml -o .docker-compose.parent.yml
 fi
 
-docker-compose -f .docker-compose.parent.yml ${LOCAL} run --rm dev
+docker-compose -f .docker-compose.parent.yml ${LOCAL} run --rm dev "$@"
