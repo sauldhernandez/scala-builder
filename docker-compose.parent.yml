@@ -6,8 +6,12 @@ services:
     image: sauldhernandez/scala-builder:latest
     volumes:
       - ./:/project
+      - "${HOME}/.sbt:/root/.sbt"
+      - "${HOME}/.ivy2:/root/.ivy2"
     command:
       - sbt
+      - -Dsbt.server.autostart=false
     ports:
       - "9000:9000"
+
 

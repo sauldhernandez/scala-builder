@@ -1,0 +1,13 @@
+#!/bin/sh
+
+if [ -f docker-compose.dev.yml ]; then
+    LOCAL="-f docker-compose.dev.yml"
+else
+    LOCAL=""
+fi
+
+if [ ! -f .docker-compose.parent.yml ]; then
+    curl -sL https://raw.githubusercontent.com/sauldhernandez/scala-builder/master/docker-compose.parent.yml -o .docker-compose.parent.yml
+fi
+
+docker-compose -f .docker-compose.parent.yml ${LOCAL} run dev
