@@ -1,0 +1,13 @@
+version: '3'
+
+services:
+  #This is a build/run container used during dev
+  dev:
+    image: sauldhernandez/scala-builder:latest
+    volumes:
+      - ./:/project
+    command:
+      - sbt
+    ports:
+      - "9000:9000"
+
