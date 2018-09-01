@@ -6,6 +6,8 @@ This builder is oppinionated, sbt projects are packaged into an assembly
 a native image of that assembly using GraalVM. The resulting image
 is a light image with only the resulting binary.
 
+The resulting native image will always be located at `/project/target/linux/assembly`
+
 ## Features
 
  - Java 10
@@ -18,8 +20,9 @@ is a light image with only the resulting binary.
 ```Dockerfile
 FROM sauldhernandez/scala-builder:latest
 
-#Add your project
-COPY . /project
+FROM scratch
+COPY --from=0 /project/target/linux/assembly /bin/service
+ENTRYPOINT ["/bin/service"]
+CMD []
 
-#That's it.
 ```
